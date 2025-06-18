@@ -7,10 +7,10 @@ import Foundation
 public struct ValidationError: LocalizedError, Equatable, Sendable {
     /// The field that failed validation.
     public let field: String
-    
+
     /// The validation rule that was violated.
     public let rule: ValidationRule
-    
+
     /// Creates a new validation error.
     /// - Parameters:
     ///   - field: The name of the field that failed validation.
@@ -19,7 +19,7 @@ public struct ValidationError: LocalizedError, Equatable, Sendable {
         self.field = field
         self.rule = rule
     }
-    
+
     /// A localized description of the validation error.
     public var errorDescription: String? {
         switch rule {
@@ -51,7 +51,7 @@ public struct ValidationError: LocalizedError, Equatable, Sendable {
             return "\(field) must match \(otherField)"
         }
     }
-    
+
     /// A localized recovery suggestion for the validation error.
     public var recoverySuggestion: String? {
         switch rule {
@@ -83,7 +83,7 @@ public struct ValidationError: LocalizedError, Equatable, Sendable {
             return "Ensure \(field) matches \(otherField)"
         }
     }
-    
+
     public static func == (lhs: ValidationError, rhs: ValidationError) -> Bool {
         lhs.field == rhs.field && lhs.rule == rhs.rule
     }

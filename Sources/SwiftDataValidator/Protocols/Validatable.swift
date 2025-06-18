@@ -9,21 +9,21 @@ import Foundation
 /// final class User: Validatable {
 ///     var name: String = ""
 ///     var email: String = ""
-///     
+///
 ///     func validate() -> [ValidationError] {
 ///         var validator = Validator()
-///         
+///
 ///         validator.validate(field: "name", value: name) { validator in
 ///             validator.required()
 ///             validator.notEmpty()
 ///             validator.maxLength(50)
 ///         }
-///         
+///
 ///         validator.validate(field: "email", value: email) { validator in
 ///             validator.required()
 ///             validator.matchesEmail()
 ///         }
-///         
+///
 ///         return validator.errors()
 ///     }
 /// }

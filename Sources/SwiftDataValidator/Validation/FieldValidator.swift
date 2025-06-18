@@ -14,13 +14,13 @@ import Foundation
 public struct FieldValidator<T> {
     /// The name of the field being validated.
     public let fieldName: String
-    
+
     /// The value to validate.
     public let value: T?
-    
+
     /// Validation errors found.
     private var errors: [ValidationError] = []
-    
+
     /// Creates a new field validator.
     /// - Parameters:
     ///   - fieldName: The name of the field being validated.
@@ -29,14 +29,14 @@ public struct FieldValidator<T> {
         self.fieldName = fieldName
         self.value = value
     }
-    
+
     /// Validates that the field is not nil.
     public mutating func required() {
         if value == nil {
             errors.append(ValidationError(field: fieldName, rule: .required))
         }
     }
-    
+
     /// Validates string is not empty or whitespace-only.
     public mutating func notEmpty() where T == String {
         if let stringValue = value {
@@ -46,7 +46,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates string length is within maximum.
     /// - Parameter max: The maximum allowed length.
     public mutating func maxLength(_ max: Int) where T == String {
@@ -57,7 +57,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates string length meets minimum.
     /// - Parameter min: The minimum required length.
     public mutating func minLength(_ min: Int) where T == String {
@@ -68,7 +68,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates numeric value is within range.
     /// - Parameters:
     ///   - min: The minimum allowed value.
@@ -80,7 +80,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates numeric value is within range.
     /// - Parameters:
     ///   - min: The minimum allowed value.
@@ -92,16 +92,17 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates date is not in the future.
     public mutating func notFuture() where T == Date {
         if let dateValue = value {
             if dateValue > Date() {
-                errors.append(ValidationError(field: fieldName, rule: .invalidFormat(reason: "cannot be in the future")))
+                let rule = ValidationRule.invalidFormat(reason: "cannot be in the future")
+                errors.append(ValidationError(field: fieldName, rule: rule))
             }
         }
     }
-    
+
     /// Validates date is not in the past.
     public mutating func notPast() where T == Date {
         if let dateValue = value {
@@ -110,7 +111,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates string matches email format.
     public mutating func matchesEmail() where T == String {
         if let stringValue = value {
@@ -121,7 +122,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates string matches URL format.
     public mutating func matchesURL() where T == String {
         if let stringValue = value {
@@ -135,25 +136,26 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Validates string matches phone number format.
     /// - Parameter allowInternational: Whether to allow international phone numbers.
     public mutating func matchesPhoneNumber(allowInternational: Bool = true) where T == String {
         if let stringValue = value {
             // Remove common formatting characters for validation
-            let cleaned = stringValue.replacingOccurrences(of: "[\\s\\-\\(\\)\\.]", with: "", options: .regularExpression)
-            
+            let cleaned = stringValue.replacingOccurrences(
+                of: "[\\s\\-\\(\\)\\.]", with: "", options: .regularExpression)
+
             let phoneRegex = allowInternational
                 ? #"^\+?[0-9]{7,15}$"# // International: optional + followed by 7-15 digits
                 : #"^[0-9]{10}$"# // US: exactly 10 digits
-            
+
             let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
             if !predicate.evaluate(with: cleaned) {
                 errors.append(ValidationError(field: fieldName, rule: .invalidPhoneNumber))
             }
         }
     }
-    
+
     /// Validates value matches another value.
     /// - Parameters:
     ///   - otherValue: The value to match against.
@@ -165,7 +167,7 @@ public struct FieldValidator<T> {
             }
         }
     }
-    
+
     /// Adds a custom validation with a predicate.
     /// - Parameters:
     ///   - predicate: A closure that returns true if the value is valid.
@@ -175,7 +177,7 @@ public struct FieldValidator<T> {
             errors.append(ValidationError(field: fieldName, rule: error))
         }
     }
-    
+
     /// Returns all validation errors.
     /// - Returns: An array of validation errors.
     public func getErrors() -> [ValidationError] {
@@ -205,10 +207,10 @@ public struct FieldValidator<T> {
 /// ```
 public struct Validator {
     private var validationErrors: [ValidationError] = []
-    
+
     /// Creates a new validator.
     public init() {}
-    
+
     /// Validates a field with the given name and value.
     /// - Parameters:
     ///   - field: The name of the field being validated.
@@ -219,13 +221,13 @@ public struct Validator {
         validator(&fieldValidator)
         validationErrors.append(contentsOf: fieldValidator.getErrors())
     }
-    
+
     /// Returns all accumulated errors.
     /// - Returns: An array of all validation errors.
     public func errors() -> [ValidationError] {
         validationErrors
     }
-    
+
     /// Checks if validation passed (no errors).
     /// - Returns: true if there are no validation errors.
     public func isValid() -> Bool {
