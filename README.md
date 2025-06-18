@@ -1,6 +1,6 @@
 # SwiftDataValidator
 
-[![CI](https://github.com/joelklabo/SwiftDataValidator/actions/workflows/ci.yml/badge.svg)](https://github.com/joelklabo/SwiftDataValidator/actions/workflows/ci.yml)
+[![CI](https://github.com/joelklabo/SwiftDataValidator/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/joelklabo/SwiftDataValidator/actions/workflows/ci.yml)
 [![Swift 6.0](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2018%2B%20%7C%20macOS%2015%2B%20%7C%20tvOS%2018%2B%20%7C%20watchOS%2011%2B%20%7C%20visionOS%202%2B-blue)
