@@ -35,9 +35,6 @@ jobs:
     
     - name: Run tests
       run: swift test -v
-    
-    # Code coverage is temporarily disabled due to Swift 6.0 compatibility issues
-    # The tests run successfully above
 
   lint:
     name: SwiftLint
