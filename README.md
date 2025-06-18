@@ -1,10 +1,10 @@
 # SwiftDataValidator
 
-[![Swift](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjoelklabo%2FSwiftDataValidator%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/joelklabo/SwiftDataValidator)
-[![Platforms](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fjoelklabo%2FSwiftDataValidator%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/joelklabo/SwiftDataValidator)
 [![CI](https://github.com/joelklabo/SwiftDataValidator/actions/workflows/ci.yml/badge.svg)](https://github.com/joelklabo/SwiftDataValidator/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/joelklabo/SwiftDataValidator/branch/main/graph/badge.svg)](https://codecov.io/gh/joelklabo/SwiftDataValidator)
+[![codecov](https://codecov.io/gh/joelklabo/SwiftDataValidator/graph/badge.svg?token=YOUR_TOKEN)](https://codecov.io/gh/joelklabo/SwiftDataValidator)
+[![Swift 6.0](https://img.shields.io/badge/Swift-6.0-orange.svg)](https://swift.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2018%2B%20%7C%20macOS%2015%2B%20%7C%20tvOS%2018%2B%20%7C%20watchOS%2011%2B%20%7C%20visionOS%202%2B-blue)
 
 A comprehensive validation framework for SwiftData models with a clean, declarative API.
 
@@ -244,14 +244,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Example Project
 
 For a complete example of using SwiftDataValidator in a real app, check out the [ViceChips](https://github.com/joelklabo/ViceChips) project where this validation framework originated.
-
-## Swift Package Index
-
-To add this package to the Swift Package Index:
-
-1. Visit [Swift Package Index](https://swiftpackageindex.com/add-a-package)
-2. Enter: `https://github.com/joelklabo/SwiftDataValidator`
-3. Submit the package
 
 ## Acknowledgments
 
