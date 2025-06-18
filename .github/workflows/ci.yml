@@ -36,31 +36,8 @@ jobs:
     - name: Run tests
       run: swift test -v
     
-    - name: Run tests with coverage
-      run: |
-        swift test --enable-code-coverage
-        
-    - name: Generate coverage report
-      if: matrix.os == 'macos-latest'
-      run: |
-        cd .build/debug
-        BINARY_PATH=$(find . -name '*.xctest' -type f | head -n 1)/Contents/MacOS/*Tests
-        PROFDATA_PATH=$(find . -name 'default.profdata' -type f | head -n 1)
-        xcrun llvm-cov export \
-          -format="lcov" \
-          -instr-profile=$PROFDATA_PATH \
-          $BINARY_PATH > ../../coverage.lcov
-        cd ../..
-    
-    - name: Upload coverage to Codecov
-      if: matrix.os == 'macos-latest'
-      uses: codecov/codecov-action@v4
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage.lcov
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: false
+    # Code coverage is temporarily disabled due to Swift 6.0 compatibility issues
+    # The tests run successfully above
 
   lint:
     name: SwiftLint
