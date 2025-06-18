@@ -240,11 +240,6 @@ Make sure all tests pass and add new tests for any new functionality.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Example Project
-
-For a complete example of using SwiftDataValidator in a real app, check out the [ViceChips](https://github.com/joelklabo/ViceChips) project where this validation framework originated.
-
 ## Acknowledgments
 
-- Inspired by validation patterns from ActiveRecord, Vapor, and other frameworks
 - Built with ❤️ using Swift 6 and SwiftData
